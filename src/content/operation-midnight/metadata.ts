@@ -1,0 +1,1 @@
+export const storyMetadata = { slug: "operacao-da-meia-noite", title: "Operação da Meia-Noite: A Chave Atlas", ageRating: "18+", players: "3—6", duration: "90—120 minutos", routes: ["social", "service", "technical"] as const, endings: 6 };

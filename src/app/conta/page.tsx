@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Conta(){return <PlaceholderPage kicker="Conta do anfitrião" title="Identidade operacional." description="Gerencie seu nome, e-mail, senha, preferências de acessibilidade e sessões recentes." action="Voltar à biblioteca" href="/biblioteca"/>}

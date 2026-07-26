@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Pistas(){return <PlaceholderPage kicker="Pistas" title="A verdade cobra atenção." description="Pistas podem ser solicitadas em níveis progressivos. Cada pedido registra o jogador e pode reduzir a pontuação coletiva." action="Voltar ao jogo" href="../jogo"/>}

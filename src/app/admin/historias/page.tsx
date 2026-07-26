@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Historias(){return <PlaceholderPage kicker="CMS narrativo" title="A história em versões." description="Edite metadata, atos, etapas, decisões, puzzles, pistas, envelopes, inventário, funções, missões, finais, pontuação e scripts sem usar eval." action="Voltar ao admin" href="/admin"/>}

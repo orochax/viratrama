@@ -1,0 +1,3 @@
+# Variáveis
+
+`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` e `NEXT_PUBLIC_APP_URL`. A service role nunca deve usar prefixo `NEXT_PUBLIC_`.

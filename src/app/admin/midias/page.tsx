@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Midias(){return <PlaceholderPage kicker="Media vault" title="Transmissões da operação." description="Uploads ficam em bucket privado, com legenda, transcrição, duração, status e URL assinada somente quando o asset estiver desbloqueado." action="Voltar ao admin" href="/admin"/>}

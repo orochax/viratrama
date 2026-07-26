@@ -1,0 +1,1 @@
+export const puzzles = [{slug:"atlas-triangulo",title:"A geometria do Atlas",answer:"NORTE",hint:"As três margens repetem o mesmo ponto cardeal.",maxAttempts:3},{slug:"janus-assinatura",title:"Assinatura Janus",answer:"VESPER",hint:"Leia as iniciais na ordem do horário fictício.",maxAttempts:3}];

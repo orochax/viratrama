@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Lobby(){return <PlaceholderPage kicker="Lobby" title="A equipe se reúne." description="Convide de três a seis jogadores. O anfitrião também joga e não recebe informações de spoiler." action="Ver participantes" href="../participantes"/>}

@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Licencas(){return <PlaceholderPage kicker="Licenciamento" title="Códigos sob auditoria." description="Gere lotes, exporte CSV, revogue ou reatribua licenças. O painel exibe somente os últimos quatro caracteres do código." action="Voltar ao admin" href="/admin"/>}

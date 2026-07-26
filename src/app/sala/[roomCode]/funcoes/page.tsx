@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Funcoes(){return <PlaceholderPage kicker="Distribuição" title="Toda equipe precisa de um ponto cego." description="As funções são sorteadas com combinações válidas para o tamanho da equipe. O anfitrião pode usar o modo manual quando necessário." action="Revelar função" href="../revelar"/>}

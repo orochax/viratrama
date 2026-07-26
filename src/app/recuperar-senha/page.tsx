@@ -1,0 +1,1 @@
+import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Recuperar(){return <PlaceholderPage kicker="Recuperação segura" title="Acesso pode ser restaurado." description="Informe o e-mail do anfitrião para receber um link de recuperação. Nunca compartilhamos códigos de licença por e-mail." action="Solicitar recuperação" href="/entrar"/>}
