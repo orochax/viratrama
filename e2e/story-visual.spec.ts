@@ -17,6 +17,11 @@ for (const viewport of viewports) {
     await page.goto("/historia");
     await page.waitForLoadState("networkidle");
 
+    await expect(page.getByRole("link", { name: "Voltar" })).toBeVisible();
+    await expect(page.getByText("Favorito da equipe")).toBeVisible();
+    await expect(page.getByText("Intermediário")).toBeVisible();
+    await expect(page.getByLabel("Imagens do produto")).toBeVisible();
+    await expect(page.getByText("1 / 5")).toBeVisible();
     await expect(page.getByRole("heading", { name: /A Chave Atlas/ }).first()).toBeVisible();
     await expect(page.getByAltText(/Mansão Vesper iluminada/i)).toBeVisible();
     await expect(page.getByAltText(/Planta arquitetônica/i)).toBeVisible();
@@ -41,6 +46,9 @@ for (const viewport of viewports) {
       roleCardBorderBottom: getComputedStyle(
         document.querySelector<HTMLElement>(".role-card")!,
       ).borderBottomWidth,
+      productThumbnailCount: document.querySelectorAll(
+        ".product-gallery-thumbnails button",
+      ).length,
     }));
 
     expect(dimensions.pageWidth).toBeLessThanOrEqual(dimensions.viewportWidth + 1);
@@ -50,6 +58,7 @@ for (const viewport of viewports) {
     expect(dimensions.roleAvatarCount).toBe(6);
     expect(dimensions.roleCardBorderTop).toBe("0px");
     expect(dimensions.roleCardBorderBottom).toBe("1px");
+    expect(dimensions.productThumbnailCount).toBe(5);
     expect(consoleErrors).toEqual([]);
 
     await page.screenshot({

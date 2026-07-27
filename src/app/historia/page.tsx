@@ -1,6 +1,8 @@
 import Image from "next/image";
-import { ArrowDown, Clock3, Package, ShieldCheck, Users } from "lucide-react";
+import Link from "next/link";
+import { ArrowDown, ArrowLeft, Clock3, Package, ShieldCheck, Users } from "lucide-react";
 import { AddToCartBar } from "@/components/store/AddToCartBar";
+import { ProductGallery } from "@/components/store/ProductGallery";
 import { StoreFooter } from "@/components/store/StoreFooter";
 import { StoreHeader } from "@/components/store/StoreHeader";
 import { operationMidnightProduct } from "@/content/store/catalog";
@@ -79,19 +81,17 @@ export default function Historia() {
     <main className="store-page story-page">
       <StoreHeader />
 
-      <section className="story-hero" aria-labelledby="story-title">
-        <Image
-          src={operationMidnightProduct.image}
-          alt={operationMidnightProduct.imageAlt}
-          fill
-          priority
-          sizes="100vw"
-          className="story-hero-image"
-        />
-        <div className="story-hero-scrim" aria-hidden="true" />
-        <div className="landing-container story-hero-content">
-          <p className="eyebrow">Missão 01 / Dossiê público</p>
-          <h1 id="story-title">Operação da Meia-Noite:<br /><em>A Chave Atlas.</em></h1>
+      <section className="product-detail-top" aria-labelledby="story-title">
+        <div className="landing-container">
+          <Link href="/" className="product-back-link">
+            <ArrowLeft size={17} />
+            Voltar
+          </Link>
+
+          <ProductGallery />
+
+          <div className="product-detail-intro">
+            <h1 id="story-title">Operação da Meia-Noite: A Chave Atlas</h1>
           <p className="story-hero-copy">
             Uma festa de máscaras. Uma mansão blindada. Um dispositivo digital capaz de
             revelar segredos que atravessam fronteiras. A operação começa quando vocês decidem entrar.
@@ -106,6 +106,7 @@ export default function Historia() {
             ))}
           </div>
           <a href="#arquivos" className="button button-wine story-hero-cta">Abrir o dossiê <ArrowDown size={16} /></a>
+          </div>
         </div>
       </section>
 
