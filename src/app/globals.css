@@ -34,4 +34,14 @@ button, input { font: inherit; }
 .button-primary:hover { background: #e0c98e; transform: translateY(-1px); }
 .button-ghost { min-height: 46px; border: 1px solid var(--border); background: rgba(255,255,255,.03); padding: 0 1.15rem; transition: all .2s ease; }
 .button-ghost:hover { border-color: rgba(199,169,107,.6); background: rgba(199,169,107,.08); }
+.transmission { position: relative; isolation: isolate; }
+.transmission::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .08; background: linear-gradient(110deg, transparent 0 45%, rgba(120,183,208,.35) 50%, transparent 55%); transform: translateX(-100%); }
+.transmission:has(.is-playing)::before { animation: signal-sweep 5s linear infinite; }
+.transmission-portrait { animation: portrait-breathe 8s ease-in-out infinite; }
+.audio-wave { display: flex; height: 34px; align-items: center; gap: 3px; opacity: .65; }
+.audio-wave i { display: block; flex: 1; min-width: 2px; border-radius: 99px; background: linear-gradient(to top, var(--gold), var(--ice)); transform-origin: center; }
+.audio-wave.is-playing i { animation: audio-pulse 900ms ease-in-out infinite alternate; }
+@keyframes audio-pulse { from { transform: scaleY(.45); opacity: .45; } to { transform: scaleY(1); opacity: 1; } }
+@keyframes signal-sweep { to { transform: translateX(100%); } }
+@keyframes portrait-breathe { 0%, 100% { filter: brightness(.94); } 50% { filter: brightness(1.04); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }

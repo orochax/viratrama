@@ -1,1 +1,7 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Midias(){return <PlaceholderPage kicker="Media vault" title="Transmissões da operação." description="Uploads ficam em bucket privado, com legenda, transcrição, duração, status e URL assinada somente quando o asset estiver desbloqueado." action="Voltar ao admin" href="/admin"/>}
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { MediaVault } from "@/components/admin/MediaVault";
+
+export default function Midias() {
+  return <main className="mx-auto min-h-screen max-w-6xl px-5 py-10"><Link href="/admin" className="inline-flex items-center gap-2 text-sm text-[#99a1ae]"><ArrowLeft size={15}/> voltar ao admin</Link><p className="eyebrow mt-16">Media vault / áudio primeiro</p><h1 className="serif mt-4 text-6xl">Transmissões da operação.</h1><p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#99a1ae]">Cada comunicação possui retrato, áudio, transcrição, estado de produção e fallback acessível. Envie os arquivos somente depois de aprová-los.</p><MediaVault /></main>;
+}

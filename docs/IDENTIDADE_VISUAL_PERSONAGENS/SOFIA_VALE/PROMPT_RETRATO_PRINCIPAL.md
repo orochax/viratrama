@@ -1,0 +1,6 @@
+# Prompt pronto — Sofia Vale
+
+```text
+Crie um retrato cinematográfico hiper-realista de Sofia Vale, mulher adulta entre 30 e 40 anos, engenheira e arquivista infiltrada, rosto delicado e atento, pele natural, olhos castanhos inteligentes, cabelo castanho-escuro na altura dos ombros. Ela usa vestido azul-noite elegante e uma máscara branca inspirada em um cisne, sofisticada, minimalista e não carnavalesca. Está em um corredor lateral da Mansão Vesper, parcialmente escondida por uma porta, com luz prateada, azul pálida e reflexos de festa ao fundo. Expressão de coragem e medo controlado, atmosfera de fonte clandestina em perigo, thriller de espionagem hiper-realista, lente 50 mm, proporção 16:9, espaço para interface, alta resolução, sem texto, logotipo ou marca-d’água, personagem original.
+NEGATIVE PROMPT: máscara carnavalesca, fantasia de princesa, sexualização, arma, sangue, cartoon, anime, videogame, rosto deformado, texto, legenda, logotipo, marca-d’água, celebridade, pessoa pública.
+```

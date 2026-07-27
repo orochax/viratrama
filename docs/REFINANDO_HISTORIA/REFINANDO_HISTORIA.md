@@ -38,7 +38,7 @@ Ele fala com a calma de alguém acostumado a dar ordens sem precisar repeti-las.
 
 Orion não está formando uma equipe comum. Está reunindo as únicas pessoas que, naquela noite, talvez consigam entrar na Mansão Vesper e sair antes da meia-noite.
 
-(PRIMEIRA CONFIRMAÇÃO: depois que todos revelam suas funções, cada pessoa toca em “Estou pronto”. O vídeo de Orion só começa quando todos estão confirmados. Essa não é uma escolha narrativa, mas garante que ninguém fique sem conhecer sua responsabilidade.)
+(PRIMEIRA CONFIRMAÇÃO: depois que todos revelam suas funções, cada pessoa toca em “Estou pronto”. A transmissão de áudio de Orion só começa quando todos estão confirmados. Essa não é uma escolha narrativa, mas garante que ninguém fique sem conhecer sua responsabilidade.)
 
 A mansão pertence a Adrian Voss, empresário, colecionador e fundador de um instituto filantrópico admirado por políticos, artistas e grandes investidores. Naquela noite, Voss oferece um baile de máscaras para arrecadar fundos. A lista de convidados inclui diplomatas, executivos, herdeiros e consultores internacionais. Para o mundo, será apenas mais uma celebração luxuosa promovida por um homem conhecido por transformar generosidade em espetáculo.
 
@@ -78,7 +78,7 @@ Quando a equipe confirma sua identidade, uma gravação de Sofia é desbloqueada
 
 “A chave não abre um arquivo”, ela diz. “Ela abre uma guerra.”
 
-(CONSEQUÊNCIA: ao acertar `CISNE`, o aplicativo ativa a informação `sofia_identified`, adiciona Sofia aos contatos e libera seu áudio. Se o vídeo ou áudio não carregar, os jogadores podem abrir a transcrição e continuar sem perder a partida.)
+(CONSEQUÊNCIA: ao acertar `CISNE`, o aplicativo ativa a informação `sofia_identified`, adiciona Sofia aos contatos e libera sua transmissão. Se o áudio não carregar, os jogadores podem abrir a transcrição e continuar sem perder a partida.)
 
 Antes de a mensagem terminar, Sofia faz um alerta: Voss sabe que alguém tentará interferir no leilão. O sistema de segurança não foi preparado apenas para impedir uma invasão. Foi preparado para observar quem se aproxima do Atlas.
 
@@ -150,7 +150,7 @@ O rosto dele surge no celular principal sem qualquer sinal de pressa. Ao fundo, 
 
 “Vocês entraram na minha casa, desviaram meus homens e tocaram em algo que não compreendem”, ele diz. “Ainda assim, estou disposto a conversar.”
 
-(CHAMADA SIMULADA: o aparelho principal toca e vibra, se houver permissão. O anfitrião atende na tela, mas não precisa falar de verdade. O vídeo ou áudio de Voss é reproduzido como uma chamada. Se a mídia falhar, a transcrição aparece e a decisão continua disponível.)
+(CHAMADA SIMULADA: o aparelho principal toca e vibra, se houver permissão. O anfitrião atende na tela, mas não precisa falar de verdade. A transmissão de áudio de Voss é reproduzida como uma chamada. Se a mídia falhar, a transcrição aparece e a decisão continua disponível.)
 
 Voss oferece dinheiro. Oferece uma saída segura. Oferece informações sobre Orion. Promete cancelar a perseguição se a chave for devolvida e afirma que a equipe não foi contratada para destruir o Atlas, mas apenas para transferi-lo de um homem perigoso para outro.
 
@@ -251,4 +251,3 @@ Está na pergunta que permanece depois que os celulares são colocados sobre a m
 **Quando toda pessoa capaz de controlar a verdade possui motivos para escondê-la, a quem ela deveria pertencer?**
 
 (REORGANIZAÇÃO: depois do epílogo, o aplicativo gera uma lista somente com os envelopes e itens realmente usados. O anfitrião marca cada componente devolvido à caixa e confirma “Materiais reorganizados”. Só então a licença fica disponível para uma nova partida.)
-

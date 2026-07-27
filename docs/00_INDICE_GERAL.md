@@ -14,3 +14,10 @@ O aplicativo orienta acontecimentos e protege o estado da narrativa; a mesa cont
 
 - `APRESENTACAO/OPERACAO_DA_MEIA_NOITE_HISTORIA_NARRATIVA.md` — narrativa corrida para apresentar o projeto.
 - `REFINANDO_HISTORIA/REFINANDO_HISTORIA.md` — a mesma história comentada com decisões, ações na mesa e formas de registro pelo aplicativo.
+
+## Sistema de áudio e identidade visual
+
+- `SISTEMA_DE_TRANSMISSOES_DE_AUDIO.md` — funcionamento técnico e operacional das transmissões.
+- `ROTEIROS_DE_AUDIO/` — roteiros centrados em áudio, manifesto e guia de gravação.
+- `IDENTIDADE_VISUAL_PERSONAGENS/` — aparência canônica, prompts prontos e consistência dos personagens.
+- `ROTEIROS_DE_VIDEO_E_AUDIO/` — arquivo histórico dos roteiros originais.
