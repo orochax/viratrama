@@ -9,3 +9,8 @@ A fundação web e o modo demo estão implementados. A integração de produçã
 ## Princípios
 
 O aplicativo orienta acontecimentos e protege o estado da narrativa; a mesa continua sendo o centro da experiência. Nenhuma tela deve substituir o mapa, os envelopes ou a conversa entre jogadores.
+
+## Textos de apresentação e refinamento
+
+- `APRESENTACAO/OPERACAO_DA_MEIA_NOITE_HISTORIA_NARRATIVA.md` — narrativa corrida para apresentar o projeto.
+- `REFINANDO_HISTORIA/REFINANDO_HISTORIA.md` — a mesma história comentada com decisões, ações na mesa e formas de registro pelo aplicativo.
