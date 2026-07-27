@@ -1,6 +1,6 @@
 import { LockKeyhole, Timer } from "lucide-react";
 import { GameShell } from "@/components/game/GameShell";
-import { NarrativeTransmission } from "@/components/narrative";
+import { RoomTransmission } from "@/components/narrative";
 import { getTransmission } from "@/content/operation-midnight/transmissions";
 
 export default async function Jogo({ params }: { params: Promise<{ roomCode: string }> }) {
@@ -12,7 +12,7 @@ export default async function Jogo({ params }: { params: Promise<{ roomCode: str
         <p className="eyebrow">Ato 1 / O convite</p>
         <h1 className="serif mt-4 text-6xl">A transmissão começa.</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#99a1ae]">O envelope 00 está sobre a mesa. Vega abriu um canal seguro. Escutem juntos: a informação da operação também pode ser lida na transcrição.</p>
-        <div className="mt-8"><NarrativeTransmission key={transmission.code} transmission={transmission} /></div>
+        <div className="mt-8"><RoomTransmission roomCode={roomCode} transmission={transmission} /></div>
       </section>
       <aside className="space-y-4">
         <div className="panel p-5"><div className="flex items-center gap-2 text-[#c7a96b]"><Timer size={17}/><span className="eyebrow">Tempo da sessão</span></div><p className="serif mt-3 text-4xl">00:07:14</p><p className="mt-2 text-xs text-[#99a1ae]">O tempo real continua sendo registrado mesmo quando a história pausa.</p></div>

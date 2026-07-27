@@ -10,6 +10,8 @@ type Props = {
   onComplete?: (mode: "audio" | "transcript") => void;
   onEvent?: (type: string, payload?: Record<string, unknown>) => void;
   compact?: boolean;
+  syncChannel?: string;
+  isHost?: boolean;
 };
 
 const themeClasses = {
@@ -25,7 +27,7 @@ function formatTime(value: number) {
   return `${Math.floor(value / 60).toString().padStart(2, "0")}:${Math.floor(value % 60).toString().padStart(2, "0")}`;
 }
 
-export function NarrativeTransmission({ transmission, onComplete, onEvent, compact = false }: Props) {
+export function NarrativeTransmission({ transmission, onComplete, onEvent, compact = false, syncChannel, isHost = true }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "playing" | "paused" | "complete" | "error">("idle");
   const [currentTime, setCurrentTime] = useState(0);
@@ -35,6 +37,8 @@ export function NarrativeTransmission({ transmission, onComplete, onEvent, compa
   const [transcriptConfirmed, setTranscriptConfirmed] = useState(false);
   const [audioUrl, setAudioUrl] = useState(transmission.audioPath);
   const [portraitUrl, setPortraitUrl] = useState(`/${transmission.portraitPath}`);
+  const lastProgressBroadcast = useRef(0);
+  const broadcastRef = useRef<BroadcastChannel | null>(null);
 
   const progress = useMemo(() => duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0, [currentTime, duration]);
 
@@ -48,9 +52,28 @@ export function NarrativeTransmission({ transmission, onComplete, onEvent, compa
     return () => { active = false; };
   }, [transmission.code, transmission.audioPath, transmission.portraitPath]);
 
-  const emit = (type: string, payload?: Record<string, unknown>) => onEvent?.(type, payload);
+  useEffect(() => {
+    if (!syncChannel || typeof BroadcastChannel === "undefined") return;
+    const channel = new BroadcastChannel(syncChannel);
+    broadcastRef.current = channel;
+    channel.onmessage = (event: MessageEvent<{ type?: string; positionSeconds?: number; duration?: number }>) => {
+      if (isHost || !event.data?.type) return;
+      if (event.data.type === "transmission_started" || event.data.type === "transmission_resumed") setStatus("playing");
+      if (event.data.type === "transmission_paused") setStatus("paused");
+      if (event.data.type === "transmission_completed") setStatus("complete");
+      if (event.data.type === "transmission_progress" && typeof event.data.positionSeconds === "number") setCurrentTime(event.data.positionSeconds);
+      if (event.data.duration) setDuration(event.data.duration);
+    };
+    return () => { channel.close(); broadcastRef.current = null; };
+  }, [isHost, syncChannel]);
+
+  const emit = (type: string, payload?: Record<string, unknown>) => {
+    onEvent?.(type, payload);
+    if (syncChannel && isHost) broadcastRef.current?.postMessage({ type, ...payload });
+  };
 
   const start = async () => {
+    if (!isHost && syncChannel) return;
     const element = audioRef.current;
     if (!element) return;
     setStatus("loading");
@@ -88,7 +111,7 @@ export function NarrativeTransmission({ transmission, onComplete, onEvent, compa
         preload="metadata"
         muted={muted}
         onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
-        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onTimeUpdate={(event) => { const time = event.currentTarget.currentTime; setCurrentTime(time); if (isHost && syncChannel && time - lastProgressBroadcast.current >= 1) { lastProgressBroadcast.current = time; emit("transmission_progress", { code: transmission.code, positionSeconds: time, duration: event.currentTarget.duration }); } }}
         onPlay={() => setStatus("playing")}
         onPause={() => setStatus((current) => current === "complete" ? current : "paused")}
         onError={() => { setStatus("error"); emit("transmission_failed", { code: transmission.code, reason: "asset_missing_or_invalid" }); }}
@@ -121,7 +144,7 @@ export function NarrativeTransmission({ transmission, onComplete, onEvent, compa
           </div>
 
           <div className="mt-5 flex flex-wrap items-center gap-2">
-            {status === "error" ? <button className="button-primary flex items-center gap-2" onClick={start}><RotateCcw size={15} /> Tentar novamente</button> : <button className="button-primary flex items-center gap-2" onClick={togglePlayback} disabled={status === "loading"}>{status === "playing" ? <Pause size={15} /> : <Play size={15} />} {status === "playing" ? "Pausar" : status === "loading" ? "Conectando" : "Iniciar transmissão"}</button>}
+            {status === "error" ? <button className="button-primary flex items-center gap-2" onClick={start} disabled={!isHost && !!syncChannel}><RotateCcw size={15} /> Tentar novamente</button> : <button className="button-primary flex items-center gap-2" onClick={togglePlayback} disabled={status === "loading" || (!isHost && !!syncChannel)}>{!isHost && syncChannel ? <Radio size={15} /> : status === "playing" ? <Pause size={15} /> : <Play size={15} />} {!isHost && syncChannel ? "Aguardando anfitrião" : status === "playing" ? "Pausar" : status === "loading" ? "Conectando" : "Iniciar transmissão"}</button>}
             <button className="button-ghost flex items-center gap-2" onClick={() => { setMuted((value) => !value); emit("volume_changed", { muted: !muted }); }} aria-label={muted ? "Ativar som" : "Silenciar áudio"}>{muted ? <VolumeX size={15} /> : <Volume2 size={15} />}<span className="hidden sm:inline">{muted ? "Ativar som" : "Silenciar"}</span></button>
             <button className="button-ghost flex items-center gap-2" onClick={() => { setTranscriptOpen((value) => !value); emit("transcript_opened", { code: transmission.code }); }}><FileText size={15} /> {transcriptOpen ? "Fechar transcrição" : "Abrir transcrição"}</button>
           </div>
