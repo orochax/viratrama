@@ -2,6 +2,10 @@
 
 O sistema técnico de transmissões, o catálogo, o painel administrativo, a documentação e o fallback por transcrição foram implementados. Permanecem somente tarefas que exigem produção ou aprovação humana:
 
+## Banco remoto
+
+- Aplicar no Supabase remoto a migration `supabase/migrations/202607260003_audio_transmissions.sql`. O arquivo está pronto e validado localmente, mas a CLI deste ambiente não possui a senha/token de banco necessário para executar `supabase db push`.
+
 ## Mídias finais
 
 - Gerar os retratos usando os prompts em `docs/IDENTIDADE_VISUAL_PERSONAGENS/`.
