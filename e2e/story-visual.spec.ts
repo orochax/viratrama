@@ -7,27 +7,66 @@ const viewports = [
 ];
 
 for (const viewport of viewports) {
-  test(`página da missão sem overflow em ${viewport.name}`, async ({ page }, testInfo) => {
+  test(`página da missão sem overflow em ${viewport.name}`, async ({
+    page,
+  }, testInfo) => {
     const consoleErrors: string[] = [];
     page.on("console", (message) => {
       if (message.type() === "error") consoleErrors.push(message.text());
     });
 
     await page.setViewportSize(viewport);
-    await page.goto("/historia");
-    await page.waitForLoadState("networkidle");
+    await page.goto("/historia", { waitUntil: "load" });
 
     await expect(page.getByRole("link", { name: "Voltar" })).toBeVisible();
     await expect(page.getByText("Favorito da equipe")).toBeVisible();
     await expect(page.getByText("Intermediário")).toBeVisible();
     await expect(page.getByLabel("Imagens do produto")).toBeVisible();
     await expect(page.getByText("1 / 5")).toBeVisible();
-    await expect(page.getByRole("heading", { name: /A Chave Atlas/ }).first()).toBeVisible();
+    await expect(page.locator(".product-story-preview")).toBeVisible();
+    await expect(page.locator(".product-story-toggle")).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+    await page.locator(".product-story-toggle").click();
+    await expect(page.locator(".product-story-toggle")).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
+    await expect(
+      page.locator(".product-format-option.is-selected"),
+    ).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator(".story-fact")).toHaveCount(3);
+    await expect(page.getByText("R$ 119,90", { exact: true })).toBeVisible();
+    await expect(page.getByText("R$ 59,90", { exact: true })).toBeVisible();
+    await expect(
+      page.getByText("Experiência completa 100% digital. Jogue agora mesmo."),
+    ).toBeVisible();
+    await expect(page.getByText("Disponível", { exact: true })).toHaveCount(0);
+    await page.locator(".product-format-option").nth(1).click();
+    await expect(page.locator(".product-format-option").nth(1)).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(
+      page.getByRole("button", { name: /Adicionar versão digital/i }),
+    ).toBeVisible();
+    await page.locator(".product-format-option").first().click();
+    await expect(page.locator(".product-included-item")).toHaveCount(6);
+    await expect(
+      page.getByRole("heading", { name: /A Chave Atlas/ }).first(),
+    ).toBeVisible();
     await expect(page.getByAltText(/Mansão Vesper iluminada/i)).toBeVisible();
     await expect(page.getByAltText(/Planta arquitetônica/i)).toBeVisible();
-    await expect(page.getByAltText(/Dispositivo digital Chave Atlas/i)).toBeVisible();
-    await expect(page.getByRole("button", { name: /Adicionar ao carrinho/i })).toBeVisible();
-    await expect(page.getByText("Função da equipe", { exact: true })).toHaveCount(0);
+    await expect(
+      page.getByAltText(/Dispositivo digital Chave Atlas/i),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Adicionar ao carrinho/i }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Função da equipe", { exact: true }),
+    ).toHaveCount(0);
 
     const dimensions = await page.evaluate(() => ({
       viewportWidth: document.documentElement.clientWidth,
@@ -51,7 +90,9 @@ for (const viewport of viewports) {
       ).length,
     }));
 
-    expect(dimensions.pageWidth).toBeLessThanOrEqual(dimensions.viewportWidth + 1);
+    expect(dimensions.pageWidth).toBeLessThanOrEqual(
+      dimensions.viewportWidth + 1,
+    );
     expect(dimensions.squareArchiveCount).toBe(3);
     expect(dimensions.firstArchiveTitleColor).toBe("rgb(24, 23, 24)");
     expect(dimensions.firstCharacterTitleColor).toBe("rgb(24, 23, 24)");

@@ -9,14 +9,24 @@ import { useCart } from "./CartProvider";
 export function AddToCartBar() {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+  const physicalFormat = operationMidnightProduct.formatOptions[0];
 
   const handleAdd = () => {
-    addItem({ slug: operationMidnightProduct.slug, title: operationMidnightProduct.title });
+    addItem({
+      slug: operationMidnightProduct.slug,
+      title: operationMidnightProduct.title,
+      formatId: physicalFormat.id,
+      formatLabel: physicalFormat.label,
+      unitPriceInCents: physicalFormat.priceInCents,
+    });
     setAdded(true);
   };
 
   return (
-    <aside className="add-to-cart-bar" aria-label="Adicionar missão ao carrinho">
+    <aside
+      className="add-to-cart-bar"
+      aria-label="Adicionar missão ao carrinho"
+    >
       <div className="add-to-cart-bar-inner">
         <div className="add-to-cart-label">
           <strong>A Chave Atlas</strong>
@@ -27,7 +37,11 @@ export function AddToCartBar() {
             <Check size={17} /> Adicionado ao carrinho
           </Link>
         ) : (
-          <button type="button" className="button add-to-cart-button" onClick={handleAdd}>
+          <button
+            type="button"
+            className="button add-to-cart-button"
+            onClick={handleAdd}
+          >
             <ShoppingCart size={17} /> Adicionar ao carrinho
           </button>
         )}

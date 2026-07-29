@@ -4,12 +4,32 @@ export const operationMidnightProduct = {
   shortTitle: "A Chave Atlas",
   universe: "Operação da Meia-Noite",
   image: "/media/landing/operation-midnight-table.png",
-  imageAlt: "Dossiê, envelopes, mapa, chave e comunicador da Operação da Meia-Noite",
+  imageAlt:
+    "Dossiê, envelopes, mapa, chave e comunicador da Operação da Meia-Noite",
   href: "/historia",
   players: "3–6 jogadores",
   duration: "90–120 minutos",
   ageRating: "18+",
   format: "Físico + digital",
+  formatOptions: [
+    {
+      id: "physical",
+      label: "Físico + digital",
+      price: "R$ 119,90",
+      priceInCents: 11990,
+      available: true,
+      description:
+        "Caixa completa, materiais físicos e acesso ao aplicativo da missão.",
+    },
+    {
+      id: "digital",
+      label: "Digital",
+      price: "R$ 59,90",
+      priceInCents: 5990,
+      available: true,
+      description: "Experiência completa 100% digital. Jogue agora mesmo.",
+    },
+  ],
   routes: "3 rotas",
   endings: "6 finais",
   teaser:
@@ -17,3 +37,4 @@ export const operationMidnightProduct = {
 } as const;
 
 export type StoreProduct = typeof operationMidnightProduct;
+export type StoreProductFormat = StoreProduct["formatOptions"][number];

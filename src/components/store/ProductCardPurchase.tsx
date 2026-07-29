@@ -9,11 +9,15 @@ import { useCart } from "./CartProvider";
 export function ProductCardPurchase() {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+  const physicalFormat = operationMidnightProduct.formatOptions[0];
 
   const handleAdd = () => {
     addItem({
       slug: operationMidnightProduct.slug,
       title: operationMidnightProduct.title,
+      formatId: physicalFormat.id,
+      formatLabel: physicalFormat.label,
+      unitPriceInCents: physicalFormat.priceInCents,
     });
     setAdded(true);
   };
@@ -37,7 +41,11 @@ export function ProductCardPurchase() {
           Adicionado ao carrinho
         </Link>
       ) : (
-        <button type="button" className="compact-add-button" onClick={handleAdd}>
+        <button
+          type="button"
+          className="compact-add-button"
+          onClick={handleAdd}
+        >
           <ShoppingCart size={15} />
           Adicionar ao carrinho
         </button>
