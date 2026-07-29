@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { DifferenceCarousel } from "@/components/landing/DifferenceCarousel";
+import { ProductCardPurchase } from "@/components/store/ProductCardPurchase";
 import { StoreFooter } from "@/components/store/StoreFooter";
 import { StoreHeader } from "@/components/store/StoreHeader";
 import { operationMidnightProduct } from "@/content/store/catalog";
@@ -100,8 +101,8 @@ export default function Home() {
         <h1 id="hero-title" className="visually-hidden">ViraTrama</h1>
         <div className="landing-hero-poster">
           <Image
-            src="/media/landing/operation-midnight-banner-vertical-v2.png"
-            alt="Caixa aberta da Operação da Meia-Noite com a Chave Atlas digital, dossiê, mapa, retratos, máscara e comunicadores"
+            src="/media/landing/homepage-operation-midnight-campaign.png"
+            alt="Banner da Operação da Meia-Noite com materiais físicos, Chave Atlas e informações da experiência"
             fill
             preload
             unoptimized
@@ -126,39 +127,35 @@ export default function Home() {
 
           <div className="mission-list">
             {missions.map((mission) => (
-              <article className="mission-product" key={mission.slug}>
-                <div className="mission-art">
-                  <Image
-                    src={mission.image}
-                    alt={mission.imageAlt}
-                    fill
-                    sizes="(max-width: 900px) 100vw, 58vw"
-                    className="cover-image"
-                  />
-                  <span className="mission-status">{mission.status}</span>
-                  <div className="case-caption">
-                    <span>Arquivo Atlas</span>
-                    <span>Vesper / acesso restrito</span>
+              <article className="compact-product-card" key={mission.slug}>
+                <h3>{mission.title}</h3>
+
+                <div className="compact-product-summary">
+                  <div className="compact-product-media">
+                    <Image
+                      src={mission.image}
+                      alt={mission.imageAlt}
+                      fill
+                      sizes="(max-width: 760px) 44vw, 340px"
+                      className="cover-image"
+                    />
+                    <span className="compact-product-favorite">Favorito da equipe</span>
+                  </div>
+
+                  <div className="compact-product-info">
+                    <p>{mission.label}</p>
+                    <strong>{mission.universe}</strong>
+                    <div className="compact-product-tags">
+                      <span>Comece por aqui</span>
+                      <span>Cooperativo</span>
+                    </div>
+                    <div className="compact-product-meta">
+                      {mission.details.map((detail) => <span key={detail}>{detail}</span>)}
+                    </div>
                   </div>
                 </div>
 
-                <div className="mission-copy">
-                  <p className="case-kicker">{mission.label}</p>
-                  <p className="mission-universe">{mission.universe}</p>
-                  <h3>{mission.title}</h3>
-                  <p className="case-description">{mission.teaser}</p>
-                  <div className="case-meta">
-                    {mission.details.map((detail) => <span key={detail}>{detail}</span>)}
-                  </div>
-                  <div className="case-actions">
-                    <Link href={mission.href} className="button button-wine">
-                      Ver missão <ArrowRight size={15} />
-                    </Link>
-                    <Link href="/ativar" className="text-link">
-                      Já tenho este caso <KeyRound size={14} />
-                    </Link>
-                  </div>
-                </div>
+                <ProductCardPurchase />
               </article>
             ))}
           </div>

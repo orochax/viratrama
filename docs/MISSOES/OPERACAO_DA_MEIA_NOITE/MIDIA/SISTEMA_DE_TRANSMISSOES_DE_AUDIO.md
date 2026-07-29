@@ -13,7 +13,11 @@ O jogo utiliza transmissões sonoras com retratos cinematográficos, legendas e 
 
 ## Produção
 
-Use `docs/IDENTIDADE_VISUAL_PERSONAGENS/` para gerar e aprovar retratos. Use `docs/ROTEIROS_DE_AUDIO/` para gravar as falas. O painel `/admin/midias` prepara upload privado para o bucket `game-media` e registra os metadados em `media_assets`.
+Use `docs/MISSOES/OPERACAO_DA_MEIA_NOITE/IDENTIDADE_VISUAL/PERSONAGENS/`
+para gerar e aprovar retratos. Use
+`docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MIDIA/ROTEIROS_DE_AUDIO/` para gravar as
+falas. O painel `/admin/midias` prepara upload privado para o bucket
+`game-media` e registra os metadados em `media_assets`.
 
 ## Segurança
 

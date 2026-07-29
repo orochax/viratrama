@@ -3,15 +3,15 @@
 ```text
 Reformule completamente a landing page da ViraTrama neste projeto, executando a implementação, os testes e os ajustes visuais até o final.
 
-BANNER_ESCOLHIDO: 3. docs/BANNERS_LANDING/03-produto-fisico.png
+BANNER_ESCOLHIDO: 3. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/03-produto-fisico.png
 
 Opcoes disponiveis:
-1. docs/BANNERS_LANDING/01-poster-espionagem.png
-2. docs/BANNERS_LANDING/02-orion-vs-voss.png
-3. docs/BANNERS_LANDING/03-produto-fisico.png
-4. docs/BANNERS_LANDING/04-baile-mansao-vesper.png
-5. docs/BANNERS_LANDING/05-transmissao-interceptada.png
-6. docs/BANNERS_LANDING/06-dossie-vivo.png
+1. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/01-poster-espionagem.png
+2. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/02-orion-vs-voss.png
+3. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/03-produto-fisico.png
+4. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/04-baile-mansao-vesper.png
+5. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/05-transmissao-interceptada.png
+6. docs/MISSOES/OPERACAO_DA_MEIA_NOITE/MARKETING/BANNERS_LANDING/06-dossie-vivo.png
 
 O banner escolhido para esta versao e a opcao 3. Preserve as outras cinco opcoes para uso futuro.
 

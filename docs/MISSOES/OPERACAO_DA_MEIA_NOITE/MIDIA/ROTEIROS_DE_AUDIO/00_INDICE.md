@@ -1,6 +1,8 @@
 # Roteiros de áudio — Operação da Meia-Noite
 
-Esta pasta é a fonte de produção das transmissões sonoras. Os arquivos antigos em `docs/ROTEIROS_DE_VIDEO_E_AUDIO/` foram preservados como histórico e não são mais mídia obrigatória.
+Esta pasta é a fonte de produção das transmissões sonoras. Os arquivos antigos
+em `../ROTEIROS_DE_VIDEO_E_AUDIO/` foram preservados como histórico e não são
+mais mídia obrigatória.
 
 - `01_ORION.md` — recrutamento, plano, revelação e finais.
 - `02_VEGA.md` — briefing, operação, alertas, extração e finais.

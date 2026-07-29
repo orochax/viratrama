@@ -18,7 +18,7 @@ for (const viewport of viewports) {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    await expect(page.getByAltText(/Caixa aberta da Operação da Meia-Noite/i)).toBeVisible();
+    await expect(page.getByAltText(/Banner da Operação da Meia-Noite/i)).toBeVisible();
     await expect(page.getByRole("heading", { name: "Escolha sua missão." })).toBeVisible();
     await page.locator("footer").scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);

@@ -1,23 +1,17 @@
-# Operação da Meia-Noite: A Chave Atlas
+# Documentação da ViraTrama
 
-Este índice organiza o livro do jogo, a produção física, os roteiros de mídia, o aplicativo, a operação técnica e os testes. A experiência é cooperativa, para 3 a 6 jogadores, com duração de 90 a 120 minutos.
+Esta pasta separa a plataforma ViraTrama das histórias publicadas nela.
 
-## Estado do projeto
+## Plataforma e loja
 
-A fundação web e o modo demo estão implementados. A integração de produção requer Supabase e os arquivos de mídia listados em `PENDENCIAS.md`.
+Consulte [`VIRATRAMA/00_INDICE.md`](VIRATRAMA/00_INDICE.md) para arquitetura do
+site, aplicativo, operação técnica e testes.
 
-## Princípios
+## Missões
 
-O aplicativo orienta acontecimentos e protege o estado da narrativa; a mesa continua sendo o centro da experiência. Nenhuma tela deve substituir o mapa, os envelopes ou a conversa entre jogadores.
+- [`MISSOES/OPERACAO_DA_MEIA_NOITE/00_INDICE_DA_MISSAO.md`](MISSOES/OPERACAO_DA_MEIA_NOITE/00_INDICE_DA_MISSAO.md)
+  — história, personagens, objetos, mídias, produto físico e materiais de
+  divulgação da Operação da Meia-Noite.
 
-## Textos de apresentação e refinamento
-
-- `APRESENTACAO/OPERACAO_DA_MEIA_NOITE_HISTORIA_NARRATIVA.md` — narrativa corrida para apresentar o projeto.
-- `REFINANDO_HISTORIA/REFINANDO_HISTORIA.md` — a mesma história comentada com decisões, ações na mesa e formas de registro pelo aplicativo.
-
-## Sistema de áudio e identidade visual
-
-- `SISTEMA_DE_TRANSMISSOES_DE_AUDIO.md` — funcionamento técnico e operacional das transmissões.
-- `ROTEIROS_DE_AUDIO/` — roteiros centrados em áudio, manifesto e guia de gravação.
-- `IDENTIDADE_VISUAL_PERSONAGENS/` — aparência canônica, prompts prontos e consistência dos personagens.
-- `ROTEIROS_DE_VIDEO_E_AUDIO/` — arquivo histórico dos roteiros originais.
+Cada nova história deve ser criada como uma pasta independente dentro de
+`MISSOES/`.

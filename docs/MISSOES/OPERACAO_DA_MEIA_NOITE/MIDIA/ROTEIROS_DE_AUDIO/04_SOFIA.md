@@ -8,7 +8,9 @@ Direção: voz baixa, gravada às escondidas, com urgência verdadeira e ruído 
 
 ## Mensagens futuras
 
-Criar as versões completas de Janus, da autenticidade da chave e da decisão final a partir de `docs/ROTEIROS_DE_VIDEO_E_AUDIO/08_AUDIOS_DE_SOFIA.md`. O texto original foi preservado; a produção agora utiliza apenas áudio.
+Criar as versões completas de Janus, da autenticidade da chave e da decisão
+final a partir de `../ROTEIROS_DE_VIDEO_E_AUDIO/08_AUDIOS_DE_SOFIA.md`. O texto
+original foi preservado; a produção agora utiliza apenas áudio.
 
 ## MEDIA-OMN-END-03 — Cinzas
 

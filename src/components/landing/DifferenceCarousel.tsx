@@ -1,47 +1,68 @@
 "use client";
 
+import {
+  Boxes,
+  BriefcaseBusiness,
+  GitBranch,
+  Radio,
+  ShieldQuestion,
+  UsersRound,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const differences = [
-  ["A história ocupa a mesa", "Documentos, envelopes, mapas e marcadores transformam cada descoberta em uma ação real."],
-  ["Todos entram na trama", "O anfitrião também joga. Ninguém precisa assumir o papel de mestre ou conhecer a solução."],
-  ["Cada decisão deixa marca", "As escolhas da equipe alteram rotas, alianças, nível de alerta e o final da história."],
-  ["Personagens atravessam a tela", "Áudios, mensagens e transmissões fazem a narrativa reagir ao grupo durante a missão."],
-  ["Segredos dentro da equipe", "Funções e objetivos individuais criam tensão sem retirar o foco da experiência cooperativa."],
-  ["Experiência física + digital", "O aplicativo conduz a operação enquanto os materiais físicos mantêm a investigação sobre a mesa."],
+  {
+    title: "A história ocupa a mesa",
+    text: "Documentos, envelopes, mapas e marcadores transformam cada descoberta em uma ação real.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Todos entram na trama",
+    text: "O anfitrião também joga. Ninguém precisa assumir o papel de mestre ou conhecer a solução.",
+    icon: UsersRound,
+  },
+  {
+    title: "Cada decisão deixa marca",
+    text: "As escolhas da equipe alteram rotas, alianças, nível de alerta e o final da história.",
+    icon: GitBranch,
+  },
+  {
+    title: "Personagens atravessam a tela",
+    text: "Áudios, mensagens e transmissões fazem a narrativa reagir ao grupo durante a missão.",
+    icon: Radio,
+  },
+  {
+    title: "Segredos dentro da equipe",
+    text: "Funções e objetivos individuais criam tensão sem retirar o foco da experiência cooperativa.",
+    icon: ShieldQuestion,
+  },
+  {
+    title: "Experiência física + digital",
+    text: "O aplicativo conduz a operação enquanto os materiais físicos mantêm a investigação sobre a mesa.",
+    icon: Boxes,
+  },
 ];
+
+const AUTOPLAY_INTERVAL_MS = 3000;
 
 export function DifferenceCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(false);
   const pointerStart = useRef<number | null>(null);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setReduceMotion(media.matches);
-    updatePreference();
-    media.addEventListener("change", updatePreference);
-    return () => media.removeEventListener("change", updatePreference);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused || reduceMotion) return;
     const interval = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % differences.length);
-    }, 3000);
+    }, AUTOPLAY_INTERVAL_MS);
     return () => window.clearInterval(interval);
-  }, [isPaused, reduceMotion]);
+  }, []);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     pointerStart.current = event.clientX;
-    setIsPaused(true);
   };
 
   const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
     const start = pointerStart.current;
     pointerStart.current = null;
-    setIsPaused(false);
     if (start === null || Math.abs(event.clientX - start) < 40) return;
     setActiveIndex((current) => event.clientX < start
       ? (current + 1) % differences.length
@@ -52,31 +73,46 @@ export function DifferenceCarousel() {
     <section
       id="diferente"
       className="difference-carousel"
+      data-autoplay-ms={AUTOPLAY_INTERVAL_MS}
       aria-label="Diferenciais da ViraTrama"
       aria-roledescription="carrossel"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
-      }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerCancel={() => {
         pointerStart.current = null;
-        setIsPaused(false);
       }}
     >
       <div className="difference-viewport">
-        <div className="difference-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
-          {differences.map(([title, text], index) => (
+        <div
+          className="difference-track"
+          style={{
+            transform: `translateX(calc(-${activeIndex * 100}% - ${activeIndex * 12}px))`,
+          }}
+        >
+          {differences.map(({ title, text, icon: Icon }, index) => (
             <article className="difference-slide" key={title} aria-hidden={index !== activeIndex}>
-              <p className="difference-label">Por que é diferente</p>
-              <h2>{title}</h2>
-              <p>{text}</p>
+              <span className="difference-icon" aria-hidden="true">
+                <Icon size={22} strokeWidth={1.7} />
+              </span>
+              <div>
+                <h2>{title}</h2>
+                <p>{text}</p>
+              </div>
             </article>
           ))}
         </div>
+      </div>
+      <div className="difference-dots" aria-label="Selecionar diferencial">
+        {differences.map(({ title }, index) => (
+          <button
+            type="button"
+            className={index === activeIndex ? "is-active" : ""}
+            aria-label={`Mostrar diferencial: ${title}`}
+            aria-current={index === activeIndex ? "true" : undefined}
+            key={title}
+            onClick={() => setActiveIndex(index)}
+          />
+        ))}
       </div>
     </section>
   );

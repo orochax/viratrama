@@ -8,7 +8,7 @@ O sistema técnico de transmissões, o catálogo, o painel administrativo, a doc
 
 ## Mídias finais
 
-- Gerar os retratos usando os prompts em `docs/IDENTIDADE_VISUAL_PERSONAGENS/`.
+- Gerar os retratos usando os prompts em `docs/MISSOES/OPERACAO_DA_MEIA_NOITE/IDENTIDADE_VISUAL/PERSONAGENS/`.
 - Escolher e aprovar uma imagem oficial para cada personagem.
 - Registrar seeds/referências e enviar os retratos ao bucket privado `game-media`.
 - Gravar as vozes de Orion, Vega, Adrian Voss, Sofia e demais personagens necessários.

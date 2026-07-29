@@ -1,6 +1,7 @@
-# Operação da Meia-Noite: A Chave Atlas
+# ViraTrama
 
-Aplicativo web mobile-first para um jogo narrativo híbrido de suspense. A fundação atual inclui landing, história, ativação demo, lobby de sala e um motor determinístico testado.
+Loja e plataforma mobile-first para jogos narrativos híbridos. A primeira missão
+é Operação da Meia-Noite: A Chave Atlas.
 
 ## Executar localmente
 
@@ -24,4 +25,6 @@ O Supabase será configurado com Auth, PostgreSQL, RLS, Realtime e Storage priva
 
 ## Documentação
 
-Consulte `docs/00_INDICE_GERAL.md` e `PENDENCIAS.md`. Assets futuros devem preservar os códigos `MEDIA-OMN-*` e os códigos físicos definidos no livro do jogo.
+Consulte `docs/00_INDICE_GERAL.md` e `PENDENCIAS.md`. Assets futuros devem
+preservar os códigos `MEDIA-OMN-*` e os códigos físicos definidos no livro do
+jogo da missão.
