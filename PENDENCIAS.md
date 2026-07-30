@@ -22,7 +22,8 @@ Atualizado em 30 de julho de 2026.
 - [x] Processar webhook assinado e idempotente para pagamento, disputa e reembolso.
 - [x] Entregar licenca criptografada somente depois do pagamento aprovado.
 - [x] Validar produtos, disponibilidade, quantidade e precos no servidor.
-- [ ] Aplicar a migration de privilegios, configurar produtos Dev mode e executar uma compra completa.
+- [x] Validar criacao de pedido e checkout hospedado em Dev mode.
+- [ ] Concluir o pagamento Dev, receber o webhook e validar a entrega da licenca.
 - [ ] Integrar calculo de frete, estoque por kit e emissao fiscal antes da producao.
 - [ ] Adicionar tela administrativa para postagem, rastreio e reembolso.
 - [ ] Configurar e-mail transacional para confirmacao e recuperacao do link do pedido.

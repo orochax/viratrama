@@ -13,7 +13,7 @@ Migrations, na ordem:
 9. `202607300006_service_role_privileges.sql`
 
 A quarta migration adiciona versao otimista, deadlines, reentrada, recibos idempotentes,
-localizacoes e conteudo versionado. A quinta semeia funcoes, atos, 16 passos, envelopes,
+localizacoes e conteudo versionado. A quinta publica a missao e semeia funcoes, atos, 16 passos, envelopes,
 oito itens, puzzles com respostas em hash, pistas e sete finais. A sexta cria o bucket
 privado e restringe a administracao de arquivos.
  A setima revoga acesso direto do navegador a estado, respostas, votos, finais e

@@ -1,4 +1,25 @@
 -- Canonical, versioned content for Operacao da Meia-Noite.
+insert into public.stories (
+  slug, title, subtitle, trailer_copy, age_rating, min_players, max_players,
+  duration_min, duration_max, status
+) values (
+  'operacao-da-meia-noite',
+  'Operação da Meia-Noite: A Chave Atlas',
+  'A verdade muda de mãos à meia-noite.',
+  'Uma festa de máscaras. Uma mansão blindada. Um leilão que nunca deveria existir.',
+  '18+', 3, 6, 90, 120, 'published'
+)
+on conflict (slug) do update set
+  title = excluded.title,
+  subtitle = excluded.subtitle,
+  trailer_copy = excluded.trailer_copy,
+  age_rating = excluded.age_rating,
+  min_players = excluded.min_players,
+  max_players = excluded.max_players,
+  duration_min = excluded.duration_min,
+  duration_max = excluded.duration_max,
+  status = excluded.status;
+
 create table if not exists public.story_endings (
   id uuid primary key default gen_random_uuid(),
   story_id uuid not null references public.stories(id) on delete cascade,
@@ -11,6 +32,7 @@ create table if not exists public.story_endings (
   unique(story_id, slug)
 );
 alter table public.story_endings enable row level security;
+drop policy if exists "published endings unavailable to clients" on public.story_endings;
 create policy "published endings unavailable to clients" on public.story_endings
   for select using (false);
 
