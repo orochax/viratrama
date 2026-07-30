@@ -85,6 +85,35 @@ test("landing apresenta o banner escolhido e o carrossel automático", async ({
   await expect(page.getByText(/A Chave Atlas/).first()).toBeVisible();
 });
 
+test("dashboard exposes only released demo timers", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/sala/demo/jogo?dashboard=unlocked");
+  const dashboard = page.getByLabel(/Status da opera/);
+
+  await expect(dashboard.locator('[data-dashboard-timer="entry"]')).toHaveAttribute("data-status", "active");
+  await expect(dashboard.locator('[data-dashboard-timer="extraction"]')).toHaveAttribute("data-status", "locked");
+  await expect(dashboard.locator('[data-dashboard-timer="police"]')).toHaveAttribute("data-status", "active");
+  await expect(dashboard.locator('[data-dashboard-timer="team"]')).toContainText("4 / 6");
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+  await page.goto("/sala/demo/jogo?dashboard=critical");
+  await expect(dashboard.locator('[data-dashboard-timer="police"]')).toHaveAttribute("data-urgency", "critical");
+  await expect(dashboard.locator('[data-dashboard-timer="extraction"]')).toHaveAttribute("data-status", "active");
+});
+
+test("dashboard fits mobile, tablet, and desktop", async ({ page }) => {
+  for (const viewport of [
+    { width: 390, height: 844 },
+    { width: 768, height: 1024 },
+    { width: 1440, height: 960 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/sala/demo/jogo");
+    await expect(page.getByLabel(/Status da opera/)).toBeVisible();
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+});
+
 test("sala demo expõe navegação de jogo", async ({ page }) => {
   await page.goto("/sala/ATLAS1/jogo");
   await expect(page.getByText("A transmissão começa.")).toBeVisible();
