@@ -9,4 +9,5 @@
 A service role é exclusivamente server-side. O hash da licença e os timers críticos devem ser manipulados por rotas/ações de servidor.
 Nao aplique migrations em um projeto que contenha tabelas desconhecidas sem
 backup e auditoria. A migration `202607300005_commerce_abacatepay.sql` deve ser
-aplicada antes de testar `/api/checkout`.
+seguida por `202607300006_service_role_privileges.sql` antes de testar
+`/api/checkout`.

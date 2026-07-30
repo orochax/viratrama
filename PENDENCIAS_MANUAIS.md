@@ -7,7 +7,7 @@ Atualizado em 30 de julho de 2026.
 - [ ] Fazer backup do projeto que recebeu SQL de outro produto.
 - [ ] Auditar os objetos remotos antes de aplicar qualquer migration da ViraTrama.
 - [ ] Preferir um projeto Supabase limpo se a origem das tabelas estranhas nao puder ser comprovada.
-- [ ] Aplicar, em ordem, as oito migrations listadas em `docs/VIRATRAMA/TECNICO/01_BANCO_DE_DADOS.md`.
+- [ ] Aplicar, em ordem, as nove migrations listadas em `docs/VIRATRAMA/TECNICO/01_BANCO_DE_DADOS.md`.
 - [ ] Confirmar o bucket privado `game-media` e suas politicas.
 - [ ] Executar testes reais de RLS com anfitriao, convidado, admin e usuario externo.
 - [ ] Configurar URLs de Auth, SMTP, politica de senha e variaveis da `.env.example`.
@@ -34,8 +34,10 @@ Sem esses arquivos, a partida continua completa pela transcricao.
 ## Publicacao e comercio
 
 - [ ] Definir dominio, hospedagem, monitoramento, backup e recuperacao.
-- [x] Criar produtos fisico e digital na AbacatePay e configurar a chave de Dev mode.
-- [ ] Aplicar `202607300005_commerce_abacatepay.sql` somente depois da auditoria do Supabase.
+- [ ] Criar os produtos fisico e digital no ambiente Dev mode da AbacatePay.
+- [ ] Atualizar os IDs locais com os produtos de Dev mode e conceder `PRODUCT:READ` a chave.
+- [x] Aplicar `202607300005_commerce_abacatepay.sql` no Supabase.
+- [ ] Aplicar `202607300006_service_role_privileges.sql` no Supabase.
 - [ ] Cadastrar webhook HTTPS da AbacatePay para `checkout.completed`,
   `checkout.refunded`, `checkout.disputed` e `checkout.lost`.
 - [ ] Executar uma compra completa em Dev mode e confirmar pedido, evento e licenca.

@@ -22,7 +22,7 @@ Atualizado em 30 de julho de 2026.
 - [x] Processar webhook assinado e idempotente para pagamento, disputa e reembolso.
 - [x] Entregar licenca criptografada somente depois do pagamento aprovado.
 - [x] Validar produtos, disponibilidade, quantidade e precos no servidor.
-- [ ] Aplicar a migration de comercio no Supabase auditado e executar compra completa em Dev mode.
+- [ ] Aplicar a migration de privilegios, configurar produtos Dev mode e executar uma compra completa.
 - [ ] Integrar calculo de frete, estoque por kit e emissao fiscal antes da producao.
 - [ ] Adicionar tela administrativa para postagem, rastreio e reembolso.
 - [ ] Configurar e-mail transacional para confirmacao e recuperacao do link do pedido.

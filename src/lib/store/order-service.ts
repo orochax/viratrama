@@ -8,6 +8,7 @@ import {
 } from "@/lib/security/license";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
+  AbacatePayError,
   createAbacateCheckout,
   createAbacateCustomer,
   getAbacateCheckout,
@@ -85,7 +86,18 @@ async function resolveItems(input: CheckoutRequest["items"]) {
     .from("stories")
     .select("id,slug")
     .in("slug", storySlugs);
-  if (error) throw error;
+  if (error) {
+    console.error("Checkout catalog lookup failed", {
+      code: error.code,
+      message: error.message,
+    });
+    throw new StoreCheckoutError(
+      error.code === "42501"
+        ? "O Supabase ainda não concedeu acesso ao backend. Aplique a migration de privilégios."
+        : "Não foi possível consultar a missão no banco de dados.",
+      503,
+    );
+  }
 
   return input.map<ResolvedItem>((item) => {
     const catalogItem = getCheckoutCatalogItem(item.slug, item.formatId);
@@ -225,6 +237,24 @@ export async function createStoreCheckout(input: {
       })
       .eq("id", orderId);
     if (error instanceof StoreCheckoutError) throw error;
+    if (error instanceof AbacatePayError) {
+      console.error("AbacatePay checkout failed", {
+        status: error.status,
+        message: error.message,
+      });
+      if (/no products found/i.test(error.message)) {
+        throw new StoreCheckoutError(
+          "Os produtos não foram encontrados no ambiente da chave AbacatePay. Confira se produtos e chave são ambos de Dev mode.",
+          502,
+        );
+      }
+      if (error.status === 401 || error.status === 403) {
+        throw new StoreCheckoutError(
+          "A chave AbacatePay não possui as permissões necessárias para criar o pagamento.",
+          502,
+        );
+      }
+    }
     throw new StoreCheckoutError(
       "Não foi possível abrir o pagamento. Confira a chave e as permissões da AbacatePay.",
       502,

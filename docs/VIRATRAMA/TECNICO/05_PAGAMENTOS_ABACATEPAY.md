@@ -64,12 +64,14 @@ http://localhost:3000/api/webhooks/abacatepay?webhookSecret=SEU_SECRET
 
 ## Homologacao
 
-1. Audite o Supabase e aplique as oito migrations em ordem.
-2. Confirme que a chave AbacatePay esta em Dev mode.
-3. Compre uma versao digital e uma fisica.
-4. Confirme `orders`, `payment_events`, `licenses` e `license_deliveries`.
-5. Repita o mesmo webhook e confirme que nenhuma segunda licenca foi criada.
-6. Simule reembolso e confirme que a licenca ficou `revoked`.
+1. Audite o Supabase e aplique as nove migrations em ordem.
+2. Confirme que a chave e os produtos AbacatePay estao no mesmo ambiente Dev mode.
+3. Garanta `CHECKOUT:CREATE`, `CHECKOUT:READ`, `CUSTOMER:CREATE`,
+   `CUSTOMER:READ` e `PRODUCT:READ` na chave de homologacao.
+4. Compre uma versao digital e uma fisica.
+5. Confirme `orders`, `payment_events`, `licenses` e `license_deliveries`.
+6. Repita o mesmo webhook e confirme que nenhuma segunda licenca foi criada.
+7. Simule reembolso e confirme que a licenca ficou `revoked`.
 
 Frete, estoque fisico, postagem, e-mail e emissao fiscal continuam bloqueios
 para producao.
