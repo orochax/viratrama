@@ -59,6 +59,7 @@ export function OrderPageClient({ orderId }: { orderId: string }) {
   const [order, setOrder] = useState<PublicOrder | null>(null);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState("");
+  const [claimMessage, setClaimMessage] = useState("");
   const cartCleared = useRef(false);
 
   useEffect(() => {
@@ -109,6 +110,16 @@ export function OrderPageClient({ orderId }: { orderId: string }) {
     window.setTimeout(() => setCopied(""), 2_000);
   };
 
+  const claimOrder = async () => {
+    const response = await fetch(`/api/orders/${orderId}/claim`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+    const payload = await response.json();
+    setClaimMessage(payload.error ?? "Pedido salvo na sua conta.");
+  };
+
   if (error || missingToken) {
     return (
       <section className="order-page">
@@ -119,6 +130,9 @@ export function OrderPageClient({ orderId }: { orderId: string }) {
           <p>{error || "O link deste pedido está incompleto."}</p>
           <Link href="/carrinho" className="button button-wine">
             Voltar ao carrinho
+          </Link>
+          <Link href="/recuperar-pedido" className="order-receipt-link">
+            Recuperar pedido por e-mail
           </Link>
         </div>
       </section>
@@ -222,6 +236,10 @@ export function OrderPageClient({ orderId }: { orderId: string }) {
                 <Link href="/ativar" className="button button-wine">
                   Ativar a missão <ArrowRight size={17} />
                 </Link>
+                <button type="button" className="button-ghost mt-3" onClick={() => void claimOrder()}>
+                  Salvar pedido na minha conta
+                </button>
+                {claimMessage && <p className="mt-3 text-sm text-[#c7a96b]">{claimMessage}</p>}
               </>
             ) : order.status === "pending_payment" ? (
               <>

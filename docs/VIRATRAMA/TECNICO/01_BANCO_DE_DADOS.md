@@ -11,6 +11,7 @@ Migrations, na ordem:
 7. `202607300004_server_authority_hardening.sql`
 8. `202607300005_commerce_abacatepay.sql`
 9. `202607300006_service_role_privileges.sql`
+10. `202607300007_account_orders_email_play_modes.sql`
 
 A quarta migration adiciona versao otimista, deadlines, reentrada, recibos idempotentes,
 localizacoes e conteudo versionado. A quinta publica a missao e semeia funcoes, atos, 16 passos, envelopes,
@@ -22,6 +23,8 @@ midias internas; somente a API com service role produz os DTOs filtrados.
 associacao idempotente entre uma unidade comprada e sua licenca.
  A nona restaura os privilegios PostgreSQL do `service_role`, usado somente
  pelas APIs autoritativas do backend.
+ A decima adiciona recuperação de pedidos, entregas, e-mails transacionais,
+ permissões de modalidade e histórico de rastreamento.
 
 `game_sessions.state` guarda o checkpoint autoritativo da execucao. Tabelas normalizadas
 guardam catalogo, auditoria e historico. `claim_session_version` impede duas abas de

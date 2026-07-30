@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowRight, CheckCircle2, LogIn, Mail, UserPlus } from "lucide-react";
+import { ArrowRight, CheckCircle2, LogIn, Mail, RefreshCw, UserPlus } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
@@ -41,12 +41,25 @@ export function SignUpForm() {
     const { data, error: authError } = await createClient().auth.signUp({
       email: email.trim(),
       password,
-      options: { data: { full_name: name.trim() } },
+      options: {
+        data: { full_name: name.trim() },
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/biblioteca`,
+      },
     });
     if (authError) return setError(authError.message);
     setMessage(data.session ? "Conta criada. Abra sua biblioteca." : "Confira seu e-mail para confirmar a conta.");
   }
-  return <AuthFrame icon={<UserPlus />} kicker="Conta permanente" title="O anfitrião começa aqui.">{message ? <SuccessText>{message}</SuccessText> : <form onSubmit={submit}><Field label="Nome completo"><input className="activation-input" value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" minLength={2} required /></Field><Field label="E-mail"><input className="activation-input" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required /></Field><Field label="Senha · mínimo 8 caracteres"><input className="activation-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" minLength={8} required /></Field><button className="button-primary mt-6 flex w-full items-center justify-center gap-2">Criar conta <ArrowRight size={16} /></button>{error && <ErrorText>{error}</ErrorText>}</form>}</AuthFrame>;
+  async function resend() {
+    setError("");
+    const { error: resendError } = await createClient().auth.resend({
+      type: "signup",
+      email: email.trim(),
+      options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=/biblioteca` },
+    });
+    if (resendError) setError("Não foi possível reenviar agora.");
+    else setMessage("Novo link enviado. Confira também o spam.");
+  }
+  return <AuthFrame icon={<UserPlus />} kicker="Conta permanente" title="O anfitrião começa aqui.">{message ? <><SuccessText>{message}</SuccessText><button type="button" onClick={() => void resend()} className="button-ghost mt-6 inline-flex items-center gap-2"><RefreshCw size={15} /> Reenviar confirmação</button></> : <form onSubmit={submit}><Field label="Nome completo"><input className="activation-input" value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" minLength={2} required /></Field><Field label="E-mail"><input className="activation-input" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required /></Field><Field label="Senha · mínimo 8 caracteres"><input className="activation-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" minLength={8} required /></Field><button className="button-primary mt-6 flex w-full items-center justify-center gap-2">Criar conta <ArrowRight size={16} /></button>{error && <ErrorText>{error}</ErrorText>}</form>}</AuthFrame>;
 }
 
 export function RecoveryForm() {
@@ -55,7 +68,7 @@ export function RecoveryForm() {
   const [error, setError] = useState("");
   async function submit(event: FormEvent) {
     event.preventDefault();
-    const redirectTo = `${window.location.origin}/conta?recovery=1`;
+    const redirectTo = `${window.location.origin}/auth/callback?next=/redefinir-senha`;
     const { error: authError } = await createClient().auth.resetPasswordForEmail(email.trim(), { redirectTo });
     if (authError) return setError(authError.message);
     setSent(true);
@@ -81,6 +94,26 @@ export function AccountForm({ email, fullName }: { email: string; fullName: stri
     router.refresh();
   }
   return <form className="panel mt-8 p-6" onSubmit={update}><Field label="Nome"><input className="activation-input" value={name} onChange={(event) => setName(event.target.value)} /></Field><Field label="E-mail"><input className="activation-input opacity-60" value={email} disabled /></Field><Field label="Nova senha · deixe vazio para manter"><input className="activation-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={8} /></Field><div className="mt-6 flex flex-wrap gap-3"><button className="button-primary">Salvar alterações</button><button type="button" className="button-ghost" onClick={() => void signOut()}>Sair da conta</button></div>{message && <p className="mt-4 text-sm text-[#c7a96b]">{message}</p>}</form>;
+}
+
+export function NewPasswordForm() {
+  const router = useRouter();
+  const [password, setPassword] = useState("");
+  const [confirmation, setConfirmation] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  async function submit(event: FormEvent) {
+    event.preventDefault();
+    setError("");
+    if (password.length < 8 || password !== confirmation) {
+      setError("Use pelo menos 8 caracteres e repita a mesma senha.");
+      return;
+    }
+    const { error: updateError } = await createClient().auth.updateUser({ password });
+    if (updateError) setError("O link expirou. Solicite uma nova recuperação.");
+    else setMessage("Senha atualizada. Você já pode entrar na sua conta.");
+  }
+  return <AuthFrame icon={<CheckCircle2 />} kicker="Recuperação segura" title="Escolha uma nova senha.">{message ? <><SuccessText>{message}</SuccessText><button type="button" onClick={() => router.push("/entrar")} className="button-primary mt-6 inline-flex items-center gap-2">Entrar <ArrowRight size={16} /></button></> : <form onSubmit={submit}><Field label="Nova senha"><input className="activation-input" type="password" minLength={8} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" required /></Field><Field label="Repetir senha"><input className="activation-input" type="password" minLength={8} value={confirmation} onChange={(event) => setConfirmation(event.target.value)} autoComplete="new-password" required /></Field><button className="button-primary mt-6 flex w-full items-center justify-center gap-2">Salvar senha <ArrowRight size={16} /></button>{error && <ErrorText>{error}</ErrorText>}</form>}</AuthFrame>;
 }
 
 function AuthFrame({ icon, kicker, title, children }: { icon: React.ReactNode; kicker: string; title: string; children: React.ReactNode }) {

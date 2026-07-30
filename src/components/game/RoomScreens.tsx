@@ -187,7 +187,7 @@ function Briefing() {
     <section>
       <p className="eyebrow">Envelope 00 / preparação</p>
       <h1 className="serif mt-4 text-5xl">Ninguém abre nada ainda.</h1>
-      <p className="mt-4 max-w-2xl text-[#99a1ae]">Coloquem o mapa no centro, mantenham os envelopes lacrados e deixem o volume ativo apenas no aparelho principal.</p>
+      <p className="mt-4 max-w-2xl text-[#99a1ae]">{snapshot!.playMode === "digital" ? "Todos os arquivos, pistas e decisões serão liberados pelo aplicativo. Deixem cada jogador com o próprio aparelho." : "Coloquem o mapa no centro, mantenham os envelopes lacrados e deixem o volume ativo apenas no aparelho principal."}</p>
       <PlayerList />
       {snapshot!.isHost ? <button className="button-primary mt-6" disabled={!allReady || submitting} onClick={() => void command({ type: "start_game" })}>Iniciar transmissão de Orion <ArrowRight size={16} /></button> : <p className="waiting-copy mt-6">Aguardando o anfitrião iniciar a operação.</p>}
     </section>
@@ -419,7 +419,7 @@ function WaitingRole() {
 function MapView() {
   const { snapshot } = useRoom();
   const knownNodes = useMemo(() => new Set([...Object.keys(snapshot!.state.knownGraph), ...Object.values(snapshot!.state.knownGraph).flat()]), [snapshot]);
-  return <section><p className="eyebrow">Mapa físico / posições confirmadas</p><h1 className="serif mt-4 text-5xl">Mansão Vesper.</h1><p className="mt-4 text-[#99a1ae]">O aplicativo registra os pontos. A movimentação continua sobre o mapa físico.</p><div className="map-node-grid">{[...knownNodes].map((node) => { const occupants = snapshot!.players.filter((player) => snapshot!.state.locations[player.id] === node); return <article key={node}><MapPin size={16} /><strong>{node.replaceAll("-", " ")}</strong>{occupants.map((player) => <span key={player.id}>{player.nickname}</span>)}</article>; })}</div></section>;
+  return <section><p className="eyebrow">{snapshot!.playMode === "digital" ? "Mapa digital / posições confirmadas" : "Mapa físico / posições confirmadas"}</p><h1 className="serif mt-4 text-5xl">Mansão Vesper.</h1><p className="mt-4 text-[#99a1ae]">{snapshot!.playMode === "digital" ? "A equipe movimenta os marcadores diretamente no mapa digital." : "O aplicativo registra os pontos. A movimentação continua sobre o mapa físico."}</p><div className="map-node-grid">{[...knownNodes].map((node) => { const occupants = snapshot!.players.filter((player) => snapshot!.state.locations[player.id] === node); return <article key={node}><MapPin size={16} /><strong>{node.replaceAll("-", " ")}</strong>{occupants.map((player) => <span key={player.id}>{player.nickname}</span>)}</article>; })}</div></section>;
 }
 
 function Inventory() {

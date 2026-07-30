@@ -7,7 +7,7 @@ Atualizado em 30 de julho de 2026.
 - [ ] Fazer backup do projeto que recebeu SQL de outro produto.
 - [ ] Auditar os objetos remotos antes de aplicar qualquer migration da ViraTrama.
 - [ ] Preferir um projeto Supabase limpo se a origem das tabelas estranhas nao puder ser comprovada.
-- [ ] Aplicar, em ordem, as nove migrations listadas em `docs/VIRATRAMA/TECNICO/01_BANCO_DE_DADOS.md`.
+- [ ] Aplicar, em ordem, as dez migrations listadas em `docs/VIRATRAMA/TECNICO/01_BANCO_DE_DADOS.md`.
 - [ ] Reaplicar `202607300002_operation_midnight_v2.sql` para popular o conteudo
   que ficou vazio quando a historia ainda nao existia.
 - [ ] Confirmar o bucket privado `game-media` e suas politicas.
@@ -45,5 +45,8 @@ Sem esses arquivos, a partida continua completa pela transcricao.
 - [ ] Executar uma compra completa em Dev mode e confirmar pedido, evento e licenca.
 - [ ] Definir frete, emissao fiscal, politica de estoque e fluxo de postagem.
 - [ ] Trocar a chave Dev pela chave de producao apenas depois da homologacao.
+- [ ] Configurar `RESEND_API_KEY`, `EMAIL_FROM` e `EMAIL_DELIVERY_MODE=strict`.
+- [ ] Configurar SMTP, Site URL e Redirect URLs do Supabase Auth para `/auth/callback`.
+- [ ] Validar confirmação de cadastro, recuperação de senha e e-mail de compra real.
 - [ ] Publicar termos, privacidade, cookies e procedimento LGPD.
 - [ ] Gerar licencas comerciais somente depois do checkout e do lote fisico aprovados.

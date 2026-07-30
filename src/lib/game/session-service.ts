@@ -27,6 +27,7 @@ type SessionRow = {
   host_user_id: string;
   room_code: string;
   status: SessionStatus;
+  play_mode: "digital" | "hybrid";
   current_act: number;
   story_version: number;
   elapsed_seconds: number;
@@ -93,6 +94,7 @@ export type SessionSnapshot = {
   sessionId: string;
   roomCode: string;
   status: SessionStatus;
+  playMode: "digital" | "hybrid";
   version: number;
   isHost: boolean;
   selfPlayerId: string;
@@ -249,19 +251,27 @@ export function roomCookieName(roomCode: string) {
   return `vt_room_${roomCode.toUpperCase()}`;
 }
 
-export async function createRoom(licenseId: string, nickname: string) {
+export async function createRoom(licenseId: string, nickname: string, playMode: "digital" | "hybrid") {
   const auth = await createClient();
   const { data: { user } } = await auth.auth.getUser();
   if (!user) throw new GameRuleError("Entre na sua conta para criar uma sala.", 401);
   const client = db();
   const { data: license, error: licenseError } = await client
     .from("licenses")
-    .select("id,owner_user_id,status,story_id")
+    .select("id,owner_user_id,status,story_id,order_item_id,allowed_play_modes")
     .eq("id", licenseId)
     .eq("owner_user_id", user.id)
     .maybeSingle();
   if (licenseError) throw new Error(licenseError.message);
   if (!license || license.status !== "active") throw new GameRuleError("Licença ativa não encontrada.", 403);
+  let allowedModes = Array.isArray(license.allowed_play_modes) ? license.allowed_play_modes : ["digital", "hybrid"];
+  if (license.order_item_id) {
+    const { data: item } = await client.from("order_items").select("format_id").eq("id", license.order_item_id).maybeSingle();
+    allowedModes = item?.format_id === "digital" ? ["digital"] : ["digital", "hybrid"];
+  }
+  if (!allowedModes.includes(playMode)) {
+    throw new GameRuleError("Esta licença não permite a modalidade escolhida.", 403);
+  }
 
   const { data: existing } = await client
     .from("game_sessions")
@@ -296,6 +306,7 @@ export async function createRoom(licenseId: string, nickname: string) {
     host_user_id: user.id,
     room_code: roomCode,
     status: "lobby",
+    play_mode: playMode,
     story_version: STORY_VERSION,
     state: initialGameState(),
   }).select("id").single();
@@ -392,6 +403,7 @@ export async function getSnapshot(roomCode: string, guestToken?: string): Promis
     sessionId: session.id,
     roomCode: session.room_code,
     status: session.status,
+    playMode: session.play_mode,
     version: session.version,
     isHost: identity.isHost,
     selfPlayerId: identity.player.id,
@@ -549,7 +561,7 @@ export async function listLibrary() {
   const client = db();
   const { data: licenses, error } = await client
     .from("licenses")
-    .select("id,code_last4,status,story_id,stories(slug,title,cover_path)")
+    .select("id,code_last4,status,story_id,order_item_id,allowed_play_modes,stories(slug,title,cover_path)")
     .eq("owner_user_id", user.id)
     .eq("status", "active");
   if (error) throw new Error(error.message);
@@ -561,7 +573,12 @@ export async function listLibrary() {
       .order("created_at", { ascending: false })
       .limit(1)
       .maybeSingle();
-    result.push({ ...license, latestSession: session });
+    let allowedPlayModes = Array.isArray(license.allowed_play_modes) ? license.allowed_play_modes : ["digital", "hybrid"];
+    if (license.order_item_id) {
+      const { data: item } = await client.from("order_items").select("format_id").eq("id", license.order_item_id).maybeSingle();
+      if (item?.format_id === "digital") allowedPlayModes = ["digital"];
+    }
+    result.push({ ...license, allowedPlayModes, latestSession: session });
   }
   return result;
 }

@@ -26,7 +26,8 @@ Atualizado em 30 de julho de 2026.
 - [ ] Concluir o pagamento Dev, receber o webhook e validar a entrega da licenca.
 - [ ] Integrar calculo de frete, estoque por kit e emissao fiscal antes da producao.
 - [ ] Adicionar tela administrativa para postagem, rastreio e reembolso.
-- [ ] Configurar e-mail transacional para confirmacao e recuperacao do link do pedido.
+- [x] Implementar e-mail transacional para confirmacao, recuperacao e ativacao do pedido.
+- [x] Implementar area da conta, recuperação de pedido e escolha de modalidade de jogo.
 
 ## Operacao futura
 

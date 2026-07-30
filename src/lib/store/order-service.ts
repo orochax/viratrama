@@ -7,6 +7,7 @@ import {
   hashSecret,
 } from "@/lib/security/license";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { resolveOrderAccessToken, sendPurchaseConfirmation } from "@/lib/email/transactional";
 import {
   AbacatePayError,
   createAbacateCheckout,
@@ -310,6 +311,9 @@ export async function processStorePaymentEvent(input: PaymentEventInput) {
     p_licenses: toJson(licenses),
   });
   if (error) throw error;
+  if (data && input.eventType === "checkout.completed") {
+    await sendPurchaseConfirmation(input.orderId, input.eventId);
+  }
   return data;
 }
 
@@ -381,13 +385,14 @@ export async function getPublicOrder(
 ): Promise<PublicOrder | null> {
   if (!accessToken) return null;
   const admin = createAdminClient();
+  const tokenAccess = await resolveOrderAccessToken(orderId, accessToken);
+  if (!tokenAccess.valid) return null;
   const { data: initialOrder, error } = await admin
     .from("orders")
     .select(
       "id,public_number,customer_name,status,total_cents,checkout_url,receipt_url,created_at,paid_at,provider_checkout_id",
     )
     .eq("id", orderId)
-    .eq("access_token_hash", hashSecret(accessToken))
     .maybeSingle();
   if (error) throw error;
   if (!initialOrder) return null;

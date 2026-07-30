@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -39,7 +40,12 @@ async function hashDemoPassword(value: string) {
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-export default function Ativar() {
+export default function AtivarPage() {
+  return <Suspense fallback={<main className="grid min-h-screen place-items-center px-5">Carregando...</main>}><AtivarClient /></Suspense>;
+}
+
+function AtivarClient() {
+  const search = useSearchParams();
   const [step, setStep] = useState<ActivationStep>("code");
   const [code, setCode] = useState("");
   const [name, setName] = useState("");
@@ -49,6 +55,19 @@ export default function Ativar() {
   const [isDemo, setIsDemo] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const orderId = search.get("orderId");
+    const token = search.get("token");
+    if (!orderId || !token) return;
+    void fetch(`/api/orders/${orderId}/activation?token=${encodeURIComponent(token)}`)
+      .then(async (response) => {
+        const payload = await response.json();
+        if (!response.ok || !payload.code) throw new Error(payload.error ?? "A licença ainda não está disponível.");
+        setCode(payload.code);
+      })
+      .catch((reason) => setError(reason instanceof Error ? reason.message : "Não foi possível abrir a licença."))
+  }, [search]);
 
   async function requestClaim() {
     const response = await fetch("/api/activation/claim", {
@@ -207,6 +226,7 @@ export default function Ativar() {
 
         {step === "code" && (
           <form className="mt-8" onSubmit={submitCode}>
+            {search.get("orderId") && !code && <p className="mb-4 text-sm text-[#c7a96b]">Carregando a licença do seu pedido...</p>}
             <p className="text-[#99a1ae]">
               Digite o código impresso no cartão Comece Aqui para vincular esta operação à sua conta.
             </p>
