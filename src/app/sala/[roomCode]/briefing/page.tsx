@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Briefing(){return <PlaceholderPage kicker="Briefing de Vega" title="A mansão tem três entradas." description="Escolham a rota social, de serviço ou técnica. A escolha final pertence ao responsável pela função, depois da discussão do grupo." action="Entrar no jogo" href="../jogo"/>}
+import { RoomScreen } from "@/components/game/RoomScreens";
+export default function Page() { return <RoomScreen screen="briefing" />; }

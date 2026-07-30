@@ -1,3 +1,6 @@
-# Regras de cronômetro
+# Regras de cronometro
 
-Tempo de sessão é crescente; relógio narrativo avança por eventos; timer crítico usa deadline do servidor. Alarme policial padrão é 720 segundos quando a informação foi descoberta.
+Tempo de sala cresce a partir de `started_at`. Entrada e extracao aparecem depois de
+liberadas. O alarme cria no servidor um deadline de 720 segundos. Antes disso, o JSON
+nao contem `alarm_deadline_at`. Pausa narrativa nao altera o prazo policial. O cliente
+calcula apenas a diferenca visual e nao grava a cada segundo.

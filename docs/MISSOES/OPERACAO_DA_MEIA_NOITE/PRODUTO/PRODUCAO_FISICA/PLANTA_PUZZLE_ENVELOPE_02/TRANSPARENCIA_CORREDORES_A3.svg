@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+  <!-- Imprimir em acetato A3, tamanho real, sem ajustar a pagina. -->
+  <rect width="420" height="297" fill="none"/>
+  <g fill="none" stroke="#9d1d27" stroke-width=".7">
+    <circle cx="18" cy="54" r="3"/><path d="M15 54h6M18 51v6"/>
+    <circle cx="402" cy="54" r="3"/><path d="M399 54h6M402 51v6"/>
+    <circle cx="18" cy="252" r="3"/><path d="M15 252h6M18 249v6"/>
+    <circle cx="402" cy="252" r="3"/><path d="M399 252h6M402 249v6"/>
+  </g>
+  <g fill="none" stroke="#366071" stroke-width="5" stroke-linecap="square" opacity=".72">
+    <path d="M165 151h78"/>
+    <path d="M204 115v78"/>
+    <path d="M314 125h33v-10"/>
+    <path d="M314 179h33v14"/>
+  </g>
+  <g fill="none" stroke="#c7a96b" stroke-width=".8" stroke-dasharray="2 1">
+    <path d="M174 139h60v24h-60z"/>
+    <path d="M177 166h54"/>
+  </g>
+  <g fill="#20272a" font-family="Arial,sans-serif" font-size="3.4">
+    <text x="171" y="136">CAMADA DE LEITURA / CORREDORES OCULTOS</text>
+    <text x="171" y="188">Siga os corredores na ordem em que conectam as quatro familias de marcas.</text>
+  </g>
+</svg>

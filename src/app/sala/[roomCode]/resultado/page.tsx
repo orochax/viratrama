@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Resultado(){return <PlaceholderPage kicker="Resultado" title="A noite deixou marcas." description="O resultado mostra final, rota, pontuação coletiva e individual privada, tempo, alerta máximo, pistas e descobertas sem revelar respostas não encontradas." action="Reorganizar materiais" href="../reorganizacao"/>}
+import { RoomScreen } from "@/components/game/RoomScreens";
+export default function Page() { return <RoomScreen screen="resultado" />; }

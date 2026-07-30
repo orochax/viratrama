@@ -266,7 +266,7 @@ export default function Historia() {
           </p>
           <div className="role-grid">
             {roles.map((role) => {
-              const avatar = defaultRoleAvatars[role.slug];
+              const avatar = defaultRoleAvatars[role.slug === "negociadora" ? "negociador" : role.slug];
 
               return (
                 <article className="role-card" key={role.slug}>

@@ -1,1 +1,3 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Entrar(){return <PlaceholderPage kicker="Acesso do anfitrião" title="Retomar uma operação." description="Entre com seu e-mail e senha para acessar sua biblioteca, licenças e partidas pausadas. A autenticação de produção usa Supabase Auth com cookies SSR seguros." action="Ir para biblioteca" href="/biblioteca"/>}
+import { Suspense } from "react";
+import { SignInForm } from "@/components/auth/AuthForms";
+export default function Page() { return <Suspense><SignInForm /></Suspense>; }

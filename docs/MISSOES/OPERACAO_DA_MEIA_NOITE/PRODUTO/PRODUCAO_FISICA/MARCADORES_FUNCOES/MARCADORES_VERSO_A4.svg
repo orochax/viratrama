@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
+  <rect width="210" height="297" fill="#fff"/>
+  <g font-family="Georgia,serif" text-anchor="middle" fill="#c7a96b">
+    <text x="105" y="16" font-family="Arial,sans-serif" font-size="5" fill="#111">VIRATRAMA / MARCADORES DE FUNCAO / VERSO ESPELHADO / 20 MM</text>
+    <g transform="translate(180 40)"><circle r="10" fill="#10141a" stroke="#b71929"/><text y="2" font-size="6">I</text></g>
+    <g transform="translate(140 40)"><circle r="10" fill="#10141a" stroke="#b71929"/><text y="2" font-size="6">I</text></g>
+    <g transform="translate(100 40)"><circle r="10" fill="#10141a" stroke="#c7a96b"/><text y="2" font-size="6">T</text></g>
+    <g transform="translate(60 40)"><circle r="10" fill="#10141a" stroke="#c7a96b"/><text y="2" font-size="6">T</text></g>
+    <g transform="translate(180 90)"><circle r="10" fill="#10141a" stroke="#78b7d0"/><text y="2" font-size="6">O</text></g>
+    <g transform="translate(140 90)"><circle r="10" fill="#10141a" stroke="#78b7d0"/><text y="2" font-size="6">O</text></g>
+    <g transform="translate(100 90)"><circle r="10" fill="#10141a" stroke="#b55f77"/><text y="2" font-size="6">N</text></g>
+    <g transform="translate(60 90)"><circle r="10" fill="#10141a" stroke="#b55f77"/><text y="2" font-size="6">N</text></g>
+    <g transform="translate(180 140)"><circle r="10" fill="#10141a" stroke="#4f8a67"/><text y="2" font-size="6">M</text></g>
+    <g transform="translate(140 140)"><circle r="10" fill="#10141a" stroke="#4f8a67"/><text y="2" font-size="6">M</text></g>
+    <g transform="translate(100 140)"><circle r="10" fill="#10141a" stroke="#8c72a8"/><text y="2" font-size="6">A</text></g>
+    <g transform="translate(60 140)"><circle r="10" fill="#10141a" stroke="#8c72a8"/><text y="2" font-size="6">A</text></g>
+  </g>
+</svg>

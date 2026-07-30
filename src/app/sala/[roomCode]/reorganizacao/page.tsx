@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Reorganizacao(){return <PlaceholderPage kicker="Kit físico" title="Devolvam a noite à caixa." description="Marque cada item conforme ele retorna ao envelope correto. A licença só será liberada para outra partida depois da confirmação forte do anfitrião." action="Confirmar reorganização" href="/biblioteca"/>}
+import { RoomScreen } from "@/components/game/RoomScreens";
+export default function Page() { return <RoomScreen screen="reorganizacao" />; }

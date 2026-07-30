@@ -1,1 +1,7 @@
-export const puzzles = [{slug:"atlas-triangulo",title:"A geometria do Atlas",answer:"NORTE",hint:"As três margens repetem o mesmo ponto cardeal.",maxAttempts:3},{slug:"janus-assinatura",title:"Assinatura Janus",answer:"VESPER",hint:"Leia as iniciais na ordem do horário fictício.",maxAttempts:3}];
+import { puzzleDefinitions } from "./canonical";
+
+export const puzzles = Object.entries(puzzleDefinitions).map(([slug, puzzle]) => ({
+  slug,
+  maxAttempts: puzzle.maxAttempts,
+  hints: puzzle.hints,
+}));

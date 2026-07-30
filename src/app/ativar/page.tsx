@@ -215,7 +215,7 @@ export default function Ativar() {
                 id="license-code"
                 value={code}
                 onChange={(event) => setCode(event.target.value.toUpperCase())}
-                placeholder="OMN-XXXX-XXXX"
+                placeholder="OMN-XXXXXXXX-XXXXXXXX"
                 autoCapitalize="characters"
                 autoComplete="off"
                 className="activation-input tracking-[.18em]"
@@ -292,8 +292,8 @@ export default function Ativar() {
             <p className="mt-2 text-[#99a1ae]">
               Sua licença está pronta. Crie sua sala para reunir a equipe e iniciar o briefing.
             </p>
-            <Link href="/sala/demo" className="button-primary mt-6 inline-flex items-center gap-2">
-              Criar sala <ArrowRight size={16} />
+            <Link href="/biblioteca" className="button-primary mt-6 inline-flex items-center gap-2">
+              Abrir biblioteca <ArrowRight size={16} />
             </Link>
           </div>
         )}

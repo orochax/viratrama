@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Participantes(){return <PlaceholderPage kicker="Equipe" title="Funções públicas, intenções privadas." description="Jogadores podem usar aparelho próprio, aparelho compartilhado ou nenhum dispositivo. A associação entre jogador e sessão é validada no servidor." action="Sortear funções" href="../funcoes"/>}
+import { RoomScreen } from "@/components/game/RoomScreens";
+export default function Page() { return <RoomScreen screen="participantes" />; }

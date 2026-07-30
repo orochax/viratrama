@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+  <rect width="420" height="297" fill="#ebe5d7"/>
+  <rect x="10" y="10" width="400" height="277" fill="none" stroke="#191817" stroke-width=".7"/>
+  <g fill="#191817" font-family="Georgia,serif">
+    <text x="20" y="27" font-size="8">INSTITUTO VESPER</text>
+    <text x="20" y="38" font-size="4" letter-spacing="1.2">PLANTA PARCIAL / NIVEL PRINCIPAL / ARQUIVO 02</text>
+    <text x="342" y="27" font-size="4">ESCALA GRAFICA 1:125</text>
+  </g>
+  <g fill="none" stroke="#282522" stroke-width="1.4">
+    <path d="M28 60h75v55H28zM103 60h62v55h-62zM165 60h78v55h-78zM243 60h71v55h-71z"/>
+    <path d="M28 115h52v78H28zM80 115h85v78H80zM243 115h71v78h-71z"/>
+    <path d="M28 193h75v48H28zM103 193h62v48h-62zM165 193h78v48h-78zM243 193h71v48h-71z"/>
+    <path d="M314 82h66v111h-66z"/>
+  </g>
+  <g fill="none" stroke="#5e584f" stroke-width=".45">
+    <path d="M34 66h63v43H34zM109 66h50v43h-50zM171 66h66v43h-66zM249 66h59v43h-59z"/>
+    <path d="M34 121h40v66H34zM86 121h73v66H86zM249 121h59v66h-59z"/>
+    <path d="M34 199h63v36H34zM109 199h50v36h-50zM171 199h66v36h-66zM249 199h59v36h-59z"/>
+    <path d="M320 88h54v99h-54z"/>
+  </g>
+  <!-- Lacunas intencionais: a transparencia completa apenas os corredores. -->
+  <g fill="#ebe5d7" stroke="none">
+    <rect x="158" y="119" width="92" height="70"/>
+    <rect x="312" y="112" width="10" height="26"/>
+    <rect x="312" y="168" width="10" height="22"/>
+  </g>
+  <g fill="#191817" font-family="Arial,sans-serif" font-size="4.2" text-anchor="middle">
+    <text x="65" y="88">RECEPCAO</text><text x="134" y="88">SALAO DE MASCARAS</text>
+    <text x="204" y="88">GALERIA</text><text x="278" y="88">BIBLIOTECA</text>
+    <text x="54" y="151">COZINHA</text><text x="122" y="151">ADEGA</text>
+    <text x="278" y="151">ALA TECNICA</text><text x="65" y="219">ENTRADA DE SERVICO</text>
+    <text x="134" y="219">SALA DE SISTEMAS</text><text x="204" y="219">TUNEL TECNICO</text>
+    <text x="278" y="219">CENTRAL DE SEGURANCA</text><text x="347" y="137">CORREDOR RESTRITO</text>
+  </g>
+  <g fill="none" stroke="#9d1d27" stroke-width=".7">
+    <circle cx="18" cy="54" r="3"/><path d="M15 54h6M18 51v6"/>
+    <circle cx="402" cy="54" r="3"/><path d="M399 54h6M402 51v6"/>
+    <circle cx="18" cy="252" r="3"/><path d="M15 252h6M18 249v6"/>
+    <circle cx="402" cy="252" r="3"/><path d="M399 252h6M402 249v6"/>
+  </g>
+  <!-- Quatro grupos de marcas: 2, 3, 1 e 7 elementos. A ordem depende da sobreposicao. -->
+  <g fill="#191817">
+    <circle cx="188" cy="131" r="1.2"/><circle cx="194" cy="131" r="1.2"/>
+    <rect x="205" y="129.8" width="2.4" height="2.4"/><rect x="211" y="129.8" width="2.4" height="2.4"/><rect x="217" y="129.8" width="2.4" height="2.4"/>
+    <path d="M229 129h3l-1.5 3z"/>
+    <g transform="translate(181 177)"><circle cx="0" cy="0" r=".9"/><circle cx="5" cy="0" r=".9"/><circle cx="10" cy="0" r=".9"/><circle cx="15" cy="0" r=".9"/><circle cx="20" cy="0" r=".9"/><circle cx="25" cy="0" r=".9"/><circle cx="30" cy="0" r=".9"/></g>
+  </g>
+  <g fill="#191817" font-family="Arial,sans-serif">
+    <text x="20" y="270" font-size="4">DOCUMENTO INCOMPLETO. NAO INFERIR PASSAGENS SEM A CAMADA DE LEITURA.</text>
+    <text x="20" y="278" font-size="3.4">Alinhar pelos quatro registros vermelhos. Confirmar o resultado no terminal da Analista.</text>
+  </g>
+  <g transform="translate(350 256)" fill="none" stroke="#191817" stroke-width=".6">
+    <path d="M0 12h40M0 10v4M10 10v4M20 10v4M30 10v4M40 10v4"/>
+    <text x="0" y="20" fill="#191817" stroke="none" font-family="Arial,sans-serif" font-size="3">0</text>
+    <text x="37" y="20" fill="#191817" stroke="none" font-family="Arial,sans-serif" font-size="3">5 m</text>
+  </g>
+</svg>

@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Revelar(){return <PlaceholderPage kicker="Revelação protegida" title="Sua função é confidencial." description="Em aparelho compartilhado, cada jogador confirma sua identidade com o código pessoal. O conteúdo secreto não fica disponível para outros participantes." action="Abrir briefing" href="../briefing"/>}
+import { RoomScreen } from "@/components/game/RoomScreens";
+export default function Page() { return <RoomScreen screen="revelar" />; }

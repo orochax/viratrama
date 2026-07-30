@@ -73,7 +73,7 @@ Estes itens ficam na caixa, mas não pertencem a nenhum envelope de história.
 | EXT-04 | 1 | Cartão de ativação da licença | 85 × 55 mm ou A7 | Código único da cópia, URL digitável e QR correspondente. | CANÔNICO |
 | EXT-05 | 1 | Guia rápido do anfitrião | A5, 4 páginas | Preparar mesa, criar sala, cadastrar 3–6 jogadores, lidar com aparelho compartilhado e reorganizar. | CANÔNICO |
 | EXT-06 | 1 | Cartão de ficção, segurança e acessibilidade | A6 | Explicar que pessoas, empresas, documentos e sistemas são fictícios; orientar pausa e transcrições. | PROPOSTO |
-| EXT-07 | 1 | Mapa operacional da Mansão Vesper | A3 dobrável | Controlar deslocamentos durante infiltração e extração. Não é a planta-puzzle do Envelope 02. | CANÔNICO |
+| EXT-07 | 1 | Mapa operacional da Mansão Vesper | 50 × 50 cm, quadrado e dobrável | Controlar deslocamentos durante infiltração e extração. Não é a planta-puzzle do Envelope 02. | CANÔNICO |
 | EXT-08 | 6 | Marcadores da equipe | Peças com símbolo e número 1–6 | Representar os jogadores quando o grupo se divide e durante a extração. | CANÔNICO |
 | EXT-09 | 5 | Marcadores de NPC | Voss, Sofia, Evelyn, Matteo e Helena | Mostrar personagens que podem mudar de posição ou rota. | PROPOSTO |
 | EXT-10 | 2 | Marcadores de segurança | Guardas A e B, com símbolos diferentes | Representar mudança de ronda, bloqueio de sala e perseguição. | PROPOSTO |
@@ -678,7 +678,7 @@ As páginas dos documentos ainda variam, mas a primeira unidade completa deve co
 | Berço/divisória | 1 |
 | Envelopes sem FINAL | 7 |
 | Envelope FINAL opcional | 1 |
-| Mapa operacional A3 | 1 |
+| Mapa operacional quadrado 50 × 50 cm | 1 |
 | Planta investigativa A3 | 1 |
 | Overlay A3 | 1 |
 | Overlay técnico A5 | 1 |

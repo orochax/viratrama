@@ -1,1 +1,2 @@
-import { PlaceholderPage } from "@/components/PlaceholderPage"; export default function Cadastro(){return <PlaceholderPage kicker="Conta permanente" title="O anfitrião começa aqui." description="Cadastre nome, e-mail e senha. Jogadores não precisam criar contas permanentes." action="Criar conta" href="/biblioteca"/>}
+import { SignUpForm } from "@/components/auth/AuthForms";
+export default function Page() { return <SignUpForm />; }

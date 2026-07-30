@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
+  <defs>
+    <clipPath id="c"><circle cx="0" cy="0" r="9.2"/></clipPath>
+  </defs>
+  <rect width="210" height="297" fill="#fff"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle">
+    <text x="105" y="16" font-size="5" fill="#111">VIRATRAMA / MARCADORES DE FUNCAO / FRENTE / 20 MM</text>
+    <g transform="translate(30 40)"><circle r="10" fill="#111" stroke="#b71929" stroke-width=".8"/><image href="../../../../../../public/media/roles/infiltrador-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">INFILTRADOR M</text></g>
+    <g transform="translate(70 40)"><circle r="10" fill="#111" stroke="#b71929" stroke-width=".8"/><image href="../../../../../../public/media/roles/infiltrador-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">INFILTRADOR F</text></g>
+    <g transform="translate(110 40)"><circle r="10" fill="#111" stroke="#c7a96b" stroke-width=".8"/><image href="../../../../../../public/media/roles/tecnica-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">TECNICA M</text></g>
+    <g transform="translate(150 40)"><circle r="10" fill="#111" stroke="#c7a96b" stroke-width=".8"/><image href="../../../../../../public/media/roles/tecnica-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">TECNICA F</text></g>
+    <g transform="translate(30 90)"><circle r="10" fill="#111" stroke="#78b7d0" stroke-width=".8"/><image href="../../../../../../public/media/roles/observador-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">OBSERVADOR M</text></g>
+    <g transform="translate(70 90)"><circle r="10" fill="#111" stroke="#78b7d0" stroke-width=".8"/><image href="../../../../../../public/media/roles/observador-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">OBSERVADOR F</text></g>
+    <g transform="translate(110 90)"><circle r="10" fill="#111" stroke="#b55f77" stroke-width=".8"/><image href="../../../../../../public/media/roles/negociador-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">NEGOCIADORA M</text></g>
+    <g transform="translate(150 90)"><circle r="10" fill="#111" stroke="#b55f77" stroke-width=".8"/><image href="../../../../../../public/media/roles/negociador-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">NEGOCIADORA F</text></g>
+    <g transform="translate(30 140)"><circle r="10" fill="#111" stroke="#4f8a67" stroke-width=".8"/><image href="../../../../../../public/media/roles/motorista-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">MOTORISTA M</text></g>
+    <g transform="translate(70 140)"><circle r="10" fill="#111" stroke="#4f8a67" stroke-width=".8"/><image href="../../../../../../public/media/roles/motorista-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">MOTORISTA F</text></g>
+    <g transform="translate(110 140)"><circle r="10" fill="#111" stroke="#8c72a8" stroke-width=".8"/><image href="../../../../../../public/media/roles/analista-homem.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">ANALISTA M</text></g>
+    <g transform="translate(150 140)"><circle r="10" fill="#111" stroke="#8c72a8" stroke-width=".8"/><image href="../../../../../../public/media/roles/analista-mulher.png" x="-9.2" y="-9.2" width="18.4" height="18.4" clip-path="url(#c)"/><text y="15" font-size="2.7">ANALISTA F</text></g>
+  </g>
+</svg>

@@ -1,3 +1,5 @@
-# Regras de inventário
+# Regras de inventario
 
-Itens têm escopo coletivo ou privado, usos máximos, consumo idempotente e referência física. Uma ação aceita deve persistir antes de notificar Realtime.
+A equipe escolhe exatamente quatro de oito itens. O Motorista, ou uma delegacao valida,
+confirma o uso. O item permanece no historico com estado `usado`; a segunda tentativa
+e rejeitada. A mudanca e persistida antes da notificacao Realtime.
